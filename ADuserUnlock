@@ -1,0 +1,12 @@
+# Unlocks a specific locked Windows Server Active Directory account.
+
+$username = "username" # Replace "username" with the actual username of the locked account
+
+$account = Get-ADUser -Identity $username
+if ($account -ne $null) {
+    $account | Unlock-ADAccount
+    Write-Host "The account $username has been successfully unlocked."
+}
+else {
+    Write-Host "The account $username was not found."
+}
